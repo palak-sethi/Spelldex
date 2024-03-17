@@ -1,5 +1,6 @@
 package com.palaksethi.spelldex.models
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
 

@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.palaksethi.spelldex.paging.SpellPagingAdapter
 import com.palaksethi.spelldex.viewmodels.SpellViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalPagingApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
