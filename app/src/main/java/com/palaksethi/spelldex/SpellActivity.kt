@@ -2,8 +2,10 @@ package com.palaksethi.spelldex
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -30,6 +32,16 @@ class SpellActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // For devices with LOLLIPOP and above
+            window.statusBarColor = getResources().getColor(R.color.black)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // For devices with KITKAT
+            val window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            val decorView = window.decorView
+            decorView.setBackgroundColor(getResources().getColor(R.color.black))
+        }
 
         var id = intent.getStringExtra("id")
         getSpecificItem(id!!)
