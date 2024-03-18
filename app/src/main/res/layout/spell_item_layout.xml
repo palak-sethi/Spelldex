@@ -1,23 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_margin="10dp"
+    android:elevation="5dp"
+    android:padding="16dp"
+    app:cardCornerRadius="10dp">
 
-    <TextView
-        android:id="@+id/spell"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="16dp"
-        android:text="Spell Name"
-        android:textColor="#000"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#CCC" />
+        <ImageView
+            android:id="@+id/spellImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:maxHeight="120dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:src="@drawable/missing_spell" />
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp"
+            android:weightSum="4">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/spell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Spell Name"
+                    android:fontFamily="@font/averia_libre_bold"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:flow_verticalBias="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/pronunciation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:layout_marginTop="3dp"
+                    android:text="Pronunciation"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/averia_libre_light_italic"
+                    app:flow_verticalBias="0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spell" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/categoryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="5dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/categoryIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/category"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/categoryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category -"
+                    android:fontFamily="@font/averia_libre_regular"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@id/categoryIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Charm"
+                    android:textColor="#000"
+                    android:maxLines="1"
+                    android:fontFamily="@font/averia_libre_regular"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@id/categoryText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/effectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="5dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/effectIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/effect"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/effectText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Effect -"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/averia_libre_regular"
+                    app:layout_constraintStart_toEndOf="@id/effectIcon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/effect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Effect"
+                    android:maxLines="1"
+                    android:textColor="#000"
+                    android:fontFamily="@font/averia_libre_regular"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@id/effectText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

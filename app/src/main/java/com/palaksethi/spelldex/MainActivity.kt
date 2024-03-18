@@ -1,7 +1,9 @@
 package com.palaksethi.spelldex
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.ExperimentalPagingApi
@@ -32,8 +34,19 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
+        adapter.setClickListener(onCLickedSpellItem)
+
+
         spellViewModel.list.observe(this, Observer {
             adapter.submitData(lifecycle, it)
         })
+    }
+
+    private val onCLickedSpellItem  = object : SpellPagingAdapter.OnItemClickListener{
+        override fun onClicked(id: String) {
+            var intent = Intent(this@MainActivity,SpellActivity::class.java)
+            intent.putExtra("id",id)
+            startActivity(intent)
+        }
     }
 }

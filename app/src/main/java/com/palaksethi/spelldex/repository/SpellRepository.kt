@@ -5,7 +5,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.palaksethi.spelldex.SpellDatabase
-import com.palaksethi.spelldex.paging.SpellPagingSource
 import com.palaksethi.spelldex.paging.SpellRemoteMediator
 import com.palaksethi.spelldex.retrofit.SpellAPI
 import javax.inject.Inject
@@ -17,7 +16,7 @@ class SpellRepository @Inject constructor(
 ) {
 
     fun getSpells() = Pager(
-        config = PagingConfig(pageSize = 20, maxSize = 100),
+        config = PagingConfig(pageSize = 20),
         remoteMediator = SpellRemoteMediator(spellAPI, spellDatabase),
         pagingSourceFactory = { spellDatabase.spellDao().getSpells() }
     ).liveData
