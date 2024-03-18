@@ -13,7 +13,7 @@ import com.palaksethi.spelldex.models.converters.SpellAttributeConverter
 @TypeConverters(SpellAttributeConverter::class)
 abstract class SpellDatabase : RoomDatabase() {
 
-    abstract fun spellDao() : SpellDao
-    abstract fun remoteKeysDao() : RemoteKeysDao
+    abstract fun spellDao(): SpellDao
+    abstract fun remoteKeysDao(): RemoteKeysDao
 
 }

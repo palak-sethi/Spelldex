@@ -1,14 +1,12 @@
 package com.palaksethi.spelldex
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.ExperimentalPagingApi
@@ -62,23 +60,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
 
-    private val onCLickedSpellItem  = object : SpellPagingAdapter.OnItemClickListener{
+    private val onCLickedSpellItem = object : SpellPagingAdapter.OnItemClickListener {
         override fun onClicked(id: String) {
-            var intent = Intent(this@MainActivity,SpellActivity::class.java)
-            intent.putExtra("id",id)
+            var intent = Intent(this@MainActivity, SpellActivity::class.java)
+            intent.putExtra("id", id)
             startActivity(intent)
         }
     }
 
     override fun onClick(view: View?) {
-        when(view?.id){
-            R.id.search->{
-                var intent = Intent(this@MainActivity,SearchActivity::class.java)
+        when (view?.id) {
+            R.id.search -> {
+                var intent = Intent(this@MainActivity, SearchActivity::class.java)
                 startActivity(intent)
             }
         }
     }
-
 
 
 }

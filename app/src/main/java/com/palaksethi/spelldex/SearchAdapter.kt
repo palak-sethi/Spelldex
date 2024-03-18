@@ -9,28 +9,29 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.palaksethi.spelldex.databinding.SpellItemLayoutBinding
 import com.palaksethi.spelldex.models.Data
-import com.palaksethi.spelldex.paging.SpellPagingAdapter
 
 class SearchAdapter() : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     var listener: SearchAdapter.OnItemClickListener? = null
     var spells = mutableListOf<Data>()
-    var ctx : Context? = null
+    var ctx: Context? = null
 
     fun setSpellList(spells: List<Data>) {
         this.spells = spells.toMutableList()
         notifyDataSetChanged()
     }
 
-    interface OnItemClickListener{
-        fun onClicked(id:String)
+    interface OnItemClickListener {
+        fun onClicked(id: String)
     }
-    fun setClickListener(listener1: SearchAdapter.OnItemClickListener){
+
+    fun setClickListener(listener1: SearchAdapter.OnItemClickListener) {
         listener = listener1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         ctx = parent.context
-        val binding = SpellItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            SpellItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SearchViewHolder(binding)
     }
 
@@ -58,7 +59,8 @@ class SearchAdapter() : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
                 holder.binding.spellImage.setImageResource(R.drawable.missing_spell);
             } else {
                 Glide.with(ctx!!).load(item.attributes?.image).thumbnail(0.05f)
-                    .transition(DrawableTransitionOptions.withCrossFade()).into(holder.binding.spellImage)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(holder.binding.spellImage)
             }
 
         }

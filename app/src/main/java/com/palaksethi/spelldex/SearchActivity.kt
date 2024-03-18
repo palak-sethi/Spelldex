@@ -2,20 +2,17 @@ package com.palaksethi.spelldex
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.palaksethi.spelldex.databinding.ActivitySearchBinding
 import com.palaksethi.spelldex.models.Spells
-import com.palaksethi.spelldex.paging.SpellPagingAdapter
 import com.palaksethi.spelldex.retrofit.GetData
 import com.palaksethi.spelldex.retrofit.RetrofitClientInstance
 import retrofit2.Call
@@ -88,10 +85,10 @@ class SearchActivity : AppCompatActivity() {
         })
     }
 
-    private val onCLickedSpellItem  = object : SearchAdapter.OnItemClickListener{
+    private val onCLickedSpellItem = object : SearchAdapter.OnItemClickListener {
         override fun onClicked(id: String) {
-            var intent = Intent(this@SearchActivity,SpellActivity::class.java)
-            intent.putExtra("id",id)
+            var intent = Intent(this@SearchActivity, SpellActivity::class.java)
+            intent.putExtra("id", id)
             startActivity(intent)
         }
     }

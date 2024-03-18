@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -18,7 +17,8 @@ import com.palaksethi.spelldex.models.Data
 
 class SpellPagingAdapter : PagingDataAdapter<Data, SpellPagingAdapter.SpellViewHolder>(COMPARATOR) {
     var listener: SpellPagingAdapter.OnItemClickListener? = null
-    var ctx : Context? = null
+    var ctx: Context? = null
+
     class SpellViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val spell = itemView.findViewById<TextView>(R.id.spell)
         val pronunciation = itemView.findViewById<TextView>(R.id.pronunciation)
@@ -29,10 +29,11 @@ class SpellPagingAdapter : PagingDataAdapter<Data, SpellPagingAdapter.SpellViewH
         val effectLayout = itemView.findViewById<ConstraintLayout>(R.id.effectLayout)
     }
 
-    interface OnItemClickListener{
-        fun onClicked(id:String)
+    interface OnItemClickListener {
+        fun onClicked(id: String)
     }
-    fun setClickListener(listener1: SpellPagingAdapter.OnItemClickListener){
+
+    fun setClickListener(listener1: SpellPagingAdapter.OnItemClickListener) {
         listener = listener1
     }
 
@@ -41,22 +42,22 @@ class SpellPagingAdapter : PagingDataAdapter<Data, SpellPagingAdapter.SpellViewH
         if (item != null) {
             holder.spell.text = item.attributes?.name
 
-            if(item.attributes?.incantation.equals(null)) {
+            if (item.attributes?.incantation.equals(null)) {
                 holder.pronunciation.visibility = View.INVISIBLE
             }
             holder.pronunciation.text = item.attributes?.incantation
 
-            if(item.attributes?.category.equals(null)) {
+            if (item.attributes?.category.equals(null)) {
                 holder.categoryLayout.visibility = View.INVISIBLE
             }
             holder.category.text = item.attributes?.category
 
-            if(item.attributes?.effect.equals(null)) {
+            if (item.attributes?.effect.equals(null)) {
                 holder.effectLayout.visibility = View.INVISIBLE
             }
             holder.effect.text = item.attributes?.effect
 
-            if(item.attributes?.image.equals(null) || item.attributes?.image.equals("https://potterdb.com/images/missing_spell.svg")) {
+            if (item.attributes?.image.equals(null) || item.attributes?.image.equals("https://potterdb.com/images/missing_spell.svg")) {
                 holder.spellImage.setImageResource(R.drawable.missing_spell);
             } else {
                 Glide.with(ctx!!).load(item.attributes?.image).thumbnail(0.05f)

@@ -11,12 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.palaksethi.spelldex.databinding.ActivitySpellBinding
-import com.palaksethi.spelldex.models.Data
 import com.palaksethi.spelldex.models.SpellItem
-import com.palaksethi.spelldex.models.Spells
 import com.palaksethi.spelldex.retrofit.GetData
 import com.palaksethi.spelldex.retrofit.RetrofitClientInstance
-import com.palaksethi.spelldex.retrofit.SpellAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

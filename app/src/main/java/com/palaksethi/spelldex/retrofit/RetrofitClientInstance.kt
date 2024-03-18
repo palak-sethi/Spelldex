@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClientInstance {
-    companion object{
+    companion object {
 
         private var retrofit: Retrofit? = null
         val retrofitInstance: Retrofit?

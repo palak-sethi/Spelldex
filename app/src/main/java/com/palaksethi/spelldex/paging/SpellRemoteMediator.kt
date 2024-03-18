@@ -20,12 +20,13 @@ class SpellRemoteMediator(
     val spellRemoteKeysDao = spellDatabase.remoteKeysDao()
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Data>): MediatorResult {
-        return try{
+        return try {
             val currentPage = when (loadType) {
                 LoadType.REFRESH -> {
                     val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                     remoteKeys?.nextPage?.minus(1) ?: 1
                 }
+
                 LoadType.PREPEND -> {
                     val remoteKeys = getRemoteKeyForFirstItem(state)
                     val prevPage = remoteKeys?.prevPage
@@ -34,6 +35,7 @@ class SpellRemoteMediator(
                         )
                     prevPage
                 }
+
                 LoadType.APPEND -> {
                     val remoteKeys = getRemoteKeyForLastItem(state)
                     val nextPage = remoteKeys?.nextPage
@@ -47,8 +49,8 @@ class SpellRemoteMediator(
             val response = spellAPI.getSpells(currentPage, 20)
             val endOfPaginationReached = response.meta?.pagination?.last == currentPage
 
-            val prevPage = if(currentPage == 1) null else currentPage - 1
-            val nextPage = if(endOfPaginationReached) null else currentPage + 1
+            val prevPage = if (currentPage == 1) null else currentPage - 1
+            val nextPage = if (endOfPaginationReached) null else currentPage + 1
 
             spellDatabase.withTransaction {
                 spellDao.addSpells(response.data)
@@ -62,8 +64,7 @@ class SpellRemoteMediator(
                 spellRemoteKeysDao.addAllRemoteKeys(keys)
             }
             MediatorResult.Success(endOfPaginationReached)
-        }
-        catch(e: Exception){
+        } catch (e: Exception) {
             MediatorResult.Error(e)
         }
     }

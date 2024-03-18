@@ -15,7 +15,7 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext context: Context) : SpellDatabase {
+    fun providesDatabase(@ApplicationContext context: Context): SpellDatabase {
         return Room.databaseBuilder(context, SpellDatabase::class.java, "spellDB").build()
     }
 

@@ -1,7 +1,6 @@
 package com.palaksethi.spelldex.models
 
 import com.google.gson.annotations.SerializedName
-import com.palaksethi.spelldex.models.Data
 
 data class SpellItem(
 
